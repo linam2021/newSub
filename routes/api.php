@@ -51,7 +51,7 @@ Route::middleware('auth:api' , 'checkPassword')->namespace('App\Http\Controllers
     Route::post('getChallengeDayCount' , 'ChallengeController@getChallengeDayCount');
     Route::post('getTrandingInCapsules' , 'ChallengeController@getTrandingInCapsules');
     Route::post('getUserRankInCapsules' , 'ChallengeController@getUserRankInCapsules');
-    Route::post('getCountHoursAfterAddCapsules' , 'ChallengeController@getCountHoursAfterAddCapsules');
+    Route::post('getCapsulesCountAndUserRankInCapsules' , 'ChallengeController@getCapsulesCountAndUserRankInCapsules');
     //Route::post('tryEnterDayTask' , 'ChallengeController@tryEnterDayTask');
     //Route::post('isUserFinishTody' , 'ChallengeController@isUserFinishTody');
     Route::post('addDayPoints' , 'ChallengeController@addDayPoints');

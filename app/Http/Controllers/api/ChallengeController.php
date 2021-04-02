@@ -352,6 +352,31 @@ class ChallengeController extends Controller
         }
     }
 
+
+    public function getCapsulesCountAndUserRankInCapsules()
+    {
+        $userId=Auth::id();
+        try {
+            $challenge= Challenge::select(['challenges.user_id','challenges.capsules'])
+            ->where('user_id', $userId)->first();
+            $rank = DB::table('challenges')->where('in_leader_board', 1)->orderByDesc('priority')->orderByDesc('capsules')->orderBy('created_at')->get();
+            $position = $rank->search(function ($cha) use ($userId) {
+                return $cha->user_id == $userId;
+            });
+
+            $challenge->rankInCapsules=$position+1;
+
+            if (!empty($challenge)) {
+                return $this->returnData('challenge', $challenge, "The response was successful");
+            } else {
+                return $this->returnError('', 'challenge is not found !!');
+            }
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+
     // public function tryEnterDayTask(Request $request)
     // {
     //     $inputs = $request->input();
