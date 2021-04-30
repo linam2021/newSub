@@ -38,7 +38,7 @@ Route::namespace('App\Http\Controllers\api')->group(function(){
 
 /*
   Challenge API
-*/
+*/ 
 
 Route::middleware('auth:api' , 'checkPassword')->namespace('App\Http\Controllers\api')->group(function(){
     Route::post('createChallenge' , 'ChallengeController@createChallenge');

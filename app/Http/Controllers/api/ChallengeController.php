@@ -197,7 +197,7 @@ class ChallengeController extends Controller
     {
         try
         {
-            $appStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '27-2-2021 00:00:00');
+            $appStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '1-5-2021 00:00:00');
             $today = Carbon::now()->addHour();
             $diff_in_days = ceil($today->floatDiffInDays($appStartDay));
 
@@ -278,7 +278,7 @@ class ChallengeController extends Controller
     {
         try
         {
-            $appStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '27-2-2021 00:00:00');
+            $appStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '1-5-2021 00:00:00');
             $today = Carbon::now()->addHour();
             $diff_in_days = ceil($today->floatDiffInDays($appStartDay));
 
@@ -300,7 +300,7 @@ class ChallengeController extends Controller
     {
         try
         {
-            $challengStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '1-2-2021 00:00:00');
+            $challengStartDay=Carbon::createFromFormat('d-m-Y H:i:s', '1-5-2021 00:00:00');
             $today = Carbon::now()->addHour();
             $ChallengeDay = ceil($today->floatDiffInDays($challengStartDay));
             return $this->returnData('challenges Day', $ChallengeDay, "The response was successful");
