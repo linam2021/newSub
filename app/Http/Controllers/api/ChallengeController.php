@@ -287,7 +287,7 @@ class ChallengeController extends Controller
             //else
             //    return $this->getTrandingChallengesbyAvg21dayPagination();
 
-            return  $this ->getTrandingChallengesPagination();
+            return  $this ->getTrandingChallengesbyAvg21dayPagination();
         } catch (\Throwable $th) {
                 return $th->getMessage();
         }
