@@ -220,6 +220,7 @@ class ChallengeController extends Controller
 
             foreach($challenges as $challenge)
             {
+                $challenge->score =(string) DB::table('challenges')->where('user_id',$challenge->user_id)->first()->points;
                 $challenge->display_name = DB::table('users')->where('id',$challenge->user_id)->first()->display_name;
                 $challenge->pictureName= DB::table('users')->where('id',$challenge->user_id)->first()->pictureName;
                 $challenge->role= DB::table('users')->where('id',$challenge->user_id)->first()->role;
@@ -259,6 +260,7 @@ class ChallengeController extends Controller
             ->where('in_leader_board', 1)->where('challengeDaysCount','>',21)->orderByDesc('priority')->orderByDesc('score')->orderBy('created_at')->paginate(50);
             foreach($challenges as $challenge)
             {
+               $challenge->score =(string) DB::table('challenges')->where('user_id',$challenge->user_id)->first()->average;
                $challenge->display_name = DB::table('users')->where('id',$challenge->user_id)->first()->display_name;
                $challenge->pictureName= DB::table('users')->where('id',$challenge->user_id)->first()->pictureName;
                $challenge->role= DB::table('users')->where('id',$challenge->user_id)->first()->role;
