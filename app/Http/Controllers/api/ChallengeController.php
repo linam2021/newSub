@@ -216,7 +216,7 @@ class ChallengeController extends Controller
     {
        try {
             $challenges= Challenge::select(['challenges.user_id','challenges.hero_instagram','is_challengVerified', 'challenges.points as score', 'challenges.challengeDaysCount'])
-            ->where('in_leader_board', 1)->orderByDesc('priority')->orderByDesc('points')->orderBy('created_at')->paginate(50);
+            ->where('in_leader_board', 1)->orderByDesc('priority')->orderByDesc('score')->orderBy('created_at')->paginate(50);
 
             foreach($challenges as $challenge)
             {
@@ -287,7 +287,7 @@ class ChallengeController extends Controller
             //else
             //    return $this->getTrandingChallengesbyAvg21dayPagination();
 
-            return  $this ->getTrandingChallengesbyAvg21dayPagination();
+            return  $this ->getTrandingChallengesPagination();
         } catch (\Throwable $th) {
                 return $th->getMessage();
         }
