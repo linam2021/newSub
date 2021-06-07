@@ -220,7 +220,6 @@ class ChallengeController extends Controller
 
             foreach($challenges as $challenge)
             {
-                $challenge->score=DB::table('challenges')->where('user_id',$challenge->user_id)->first()->points * 1.0;
                 $challenge->display_name = DB::table('users')->where('id',$challenge->user_id)->first()->display_name;
                 $challenge->pictureName= DB::table('users')->where('id',$challenge->user_id)->first()->pictureName;
                 $challenge->role= DB::table('users')->where('id',$challenge->user_id)->first()->role;
