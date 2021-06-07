@@ -215,7 +215,7 @@ class ChallengeController extends Controller
     public function getTrandingChallengesPagination()
     {
        try {
-            $challenges= Challenge::select(['challenges.user_id','challenges.hero_instagram','is_challengVerified', 'challenges.points as score'])
+            $challenges= Challenge::select(['challenges.user_id','challenges.hero_instagram','is_challengVerified', 'challenges.points as score', 'challenges.challengeDaysCount'])
             ->where('in_leader_board', 1)->orderByDesc('priority')->orderByDesc('points')->orderBy('created_at')->paginate(50);
 
             foreach($challenges as $challenge)
