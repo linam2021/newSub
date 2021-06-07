@@ -229,7 +229,7 @@ class ChallengeController extends Controller
                 return $this->returnError('', 'challenges not found');
             }
 
-            return $this->returnData('challenges', $challenges, "The ternding is in points");
+            return $this->returnData('challenges', $challenges, "The trending is in average");
             } catch (\Throwable $th) {
                 return $th->getMessage();
             }
