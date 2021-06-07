@@ -215,11 +215,12 @@ class ChallengeController extends Controller
     public function getTrandingChallengesPagination()
     {
        try {
-            $challenges= Challenge::select(['challenges.user_id','challenges.hero_instagram','is_challengVerified', 'challenges.average as score', 'challenges.challengeDaysCount'])
+            $challenges= Challenge::select(['challenges.user_id','challenges.hero_instagram','is_challengVerified', 'challenges.points as score', 'challenges.challengeDaysCount'])
             ->where('in_leader_board', 1)->orderByDesc('priority')->orderByDesc('score')->orderBy('created_at')->paginate(50);
 
             foreach($challenges as $challenge)
             {
+                $challenge->score=DB::table('challenges')->where('user_id',$challenge->user_id)->first()->points * 1.0;
                 $challenge->display_name = DB::table('users')->where('id',$challenge->user_id)->first()->display_name;
                 $challenge->pictureName= DB::table('users')->where('id',$challenge->user_id)->first()->pictureName;
                 $challenge->role= DB::table('users')->where('id',$challenge->user_id)->first()->role;
@@ -229,7 +230,7 @@ class ChallengeController extends Controller
                 return $this->returnError('', 'challenges not found');
             }
 
-            return $this->returnData('challenges', $challenges, "The trending is in average");
+            return $this->returnData('challenges', $challenges, "The trending is in points");
             } catch (\Throwable $th) {
                 return $th->getMessage();
             }
