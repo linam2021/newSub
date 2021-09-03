@@ -284,10 +284,10 @@ class ChallengeController extends Controller
             $today = Carbon::now()->addHour();
             $diff_in_days = ceil($today->floatDiffInDays($appStartDay));
 
-            //if ($diff_in_days<21)
-            //    return  $this ->getTrandingChallengesPagination();
-            //else
-            //    return $this->getTrandingChallengesbyAvg21dayPagination();
+            if ($diff_in_days<21)
+               return  $this ->getTrandingChallengesPagination();
+            else
+               return $this->getTrandingChallengesbyAvg21dayPagination();
 
             return  $this ->getTrandingChallengesPagination();
         } catch (\Throwable $th) {
